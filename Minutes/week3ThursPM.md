@@ -35,6 +35,6 @@ Jadon Routley
 ## AOB
 
 ## Next meetings
-- Sunday 8pm (quick 30 minute meeting)
+- Sunday 5pm (quick 30 minute meeting)
 - Labs wk 12, presentation  
 - Thursday afternoons 9pm
