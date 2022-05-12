@@ -1,11 +1,12 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
+#include "motorMovement.h" /*Moving the motor functions*/
 
 
 
 void main(void) {
   /* put your own code here */
-  
+  setHorizontal(90);  setVertical(90);
 
 
 	EnableInterrupts;
