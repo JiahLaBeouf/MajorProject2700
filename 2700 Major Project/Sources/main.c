@@ -6,7 +6,9 @@
 
 void main(void) {
   /* put your own code here */
-  setHorizontal(90);  setVertical(90);
+  PWMinitialise;
+  setHorizontal(90);
+  setVertical(90);
 
 
 	EnableInterrupts;
