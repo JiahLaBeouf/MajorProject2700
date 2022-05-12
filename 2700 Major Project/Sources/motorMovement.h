@@ -6,7 +6,7 @@ void PWMinitialise(void);
 
 
 //Function for aligning horizontal angle
-void setHoriztonal(int hAngle);
+void setHorizontal(int hAngle);
 
 //Function for aligning vertical angle
 void setVertical(int vAngle);
