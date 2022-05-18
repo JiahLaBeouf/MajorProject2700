@@ -149,8 +149,3 @@ IIC_ERRORS magnet_init(void)
 {
   return iic_send_data(magnet_wr, (uint8_t*)&mag_cfg, sizeof(MAG_CFG_STRUCT));
 }
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status

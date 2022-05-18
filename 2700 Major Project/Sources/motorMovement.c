@@ -31,13 +31,13 @@ void PWMinitialise(void){
 void setHorizontal(int hAngle){
 
       
-    PWMDTY67 = (int)(20*hAngle + 2700); //Uses formula to convert desired angle to appropriate duty cycle
+    PWMDTY67 = (int)(50*hAngle); //Uses formula to convert desired angle to appropriate duty cycle
 }
 
 
 /***SET VERTICAL ANGLE***/
 void setVertical(int vAngle){
  
-     PWMDTY45 = (int)(20*vAngle + 2700); //Uses formula to convert desired angle to appropriate duty cycle
+     PWMDTY45 = (int)(50*vAngle); //Uses formula to convert desired angle to appropriate duty cycle
 
 }

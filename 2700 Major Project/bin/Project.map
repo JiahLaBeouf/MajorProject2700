@@ -15,6 +15,7 @@ FILE SECTION
 mc9s12dg256.c.o                         Model: BANKED,        Lang: ANSI-C
 main.c.o                                Model: BANKED,        Lang: ANSI-C
 Start12.c.o                             Model: BANKED,        Lang: ANSI-C
+motorMovement.c.o                       Model: BANKED,        Lang: ANSI-C
 
 *********************************************************************************************
 STARTUP SECTION
@@ -33,7 +34,7 @@ Section Name                    Size  Type     From       To       Segment
 .init                             11     R     0xC000     0xC00A   ROM_C000
 .startData                        10     R     0xC00B     0xC014   ROM_C000
 .copy                              2     R     0xC015     0xC016   ROM_C000
-.text                             52     R   0x308000   0x308033   PAGE_30
+.text                             84     R   0x308000   0x308053   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -379,7 +380,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
-READ_ONLY (R):          4D (dec:       77)
+READ_ONLY (R):          6D (dec:      109)
 READ_WRITE (R/W):      100 (dec:      256)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -719,8 +720,8 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PWMPER67                                   BA       2       2       0   .abs_section_ba
      _PWMDTY01                                   BC       2       2       0   .abs_section_bc
      _PWMDTY23                                   BE       2       2       0   .abs_section_be
-     _PWMDTY45                                   C0       2       2       0   .abs_section_c0
-     _PWMDTY67                                   C2       2       2       0   .abs_section_c2
+     _PWMDTY45                                   C0       2       2       1   .abs_section_c0
+     _PWMDTY67                                   C2       2       2       1   .abs_section_c2
      _SCI0BD                                     C8       2       2       0   .abs_section_c8
      _SCI1BD                                     D0       2       2       0   .abs_section_d0
      _ATD1CTL23                                 122       2       2       0   .abs_section_122
@@ -739,31 +740,37 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                    308000       B      11       2   .text       
+     main                                    308000      19      25       2   .text       
 - VARIABLES:
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     Init                                    30800B      29      41       2   .text       
+     Init                                    308019      29      41       2   .text       
      _Startup                                  C000       B      11       0   .init       
 - VARIABLES:
      _startupData                              C00B       6       6       3   .startData  
 - LABELS:
      __SEG_END_SSTACK                          1100       0       0       1               
+MODULE:                 -- motorMovement.c.o --
+- PROCEDURES:
+     setHorizontal                           308042       9       9       2   .text       
+     setVertical                             30804B       9       9       2   .text       
+- VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                     0     11      0
+  main.c.o                                     0     25      0
   Start12.c.o                                  0     52      0
+  motorMovement.c.o                            0     18      0
   other                                      256     12      2
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  main Init 
+  main Init setHorizontal setVertical 
 SECTION: ".init"
   _Startup 
 SECTION: ".abs_section_8"
@@ -1568,8 +1575,8 @@ OBJECT LIST SORTED BY ADDRESS
      _PWMPER67                                   BA       2       2       0   .abs_section_ba
      _PWMDTY01                                   BC       2       2       0   .abs_section_bc
      _PWMDTY23                                   BE       2       2       0   .abs_section_be
-     _PWMDTY45                                   C0       2       2       0   .abs_section_c0
-     _PWMDTY67                                   C2       2       2       0   .abs_section_c2
+     _PWMDTY45                                   C0       2       2       1   .abs_section_c0
+     _PWMDTY67                                   C2       2       2       1   .abs_section_c2
      _PWMSDN                                     C4       1       1       0   .abs_section_c4
      _SCI0BD                                     C8       2       2       0   .abs_section_c8
      _SCI0CR1                                    CA       1       1       0   .abs_section_ca
@@ -1795,12 +1802,17 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
      _Startup                                  C000       B      11       0   .init       
-     main                                    308000       B      11       2   .text       
-     Init                                    30800B      29      41       2   .text       
+     main                                    308000      19      25       2   .text       
+     Init                                    308019      29      41       2   .text       
+     setHorizontal                           308042       9       9       2   .text       
+     setVertical                             30804B       9       9       2   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
+NOT USED PROCEDURES
+motorMovement.c.o:
+  PWMinitialise 
 
 *********************************************************************************************
 COPYDOWN SECTION
@@ -1813,7 +1825,10 @@ Filling bytes inserted
 OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 _Startup                  USES __SEG_END_SSTACK Init main 
+main                      USES setHorizontal setVertical 
 Init                      USES _startupData 
+setHorizontal             USES _PWMDTY67 
+setVertical               USES _PWMDTY45 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1821,7 +1836,11 @@ DEPENDENCY TREE
  main and _Startup Group
  | 
  +- main                
- |    
+ |  | 
+ |  +- setHorizontal       
+ |  |    
+ |  +- setVertical         
+ |       
  +- _Startup            
     | 
     +- Init                
@@ -1835,5 +1854,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 77
+Total size of all blocks to be downloaded: 109
 

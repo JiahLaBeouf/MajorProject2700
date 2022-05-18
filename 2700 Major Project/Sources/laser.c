@@ -44,6 +44,7 @@ __interrupt void TC1_ISR(void) {
     if (fallEdge < riseEdge) {
         fallEdge = (unsigned long)65536 + (unsigned long)fallEdge; //If there was a clock overflow between capturing the rising and falling edge (falling edge has a lower value), adjust the value to compensate
     }
+  } 
 
     lastLaserSample = (fallEdge - riseEdge)/24038; // Calculate the period of the PWM wave, should be in m. 1m = 1ms PWM and 24038 counts = 1ms
   
