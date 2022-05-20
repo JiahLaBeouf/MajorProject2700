@@ -8,7 +8,7 @@ Also summary information like the code size is likely to be misleading.
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 
-PROGRAM "C:\Users\lachl\Documents\GitHub\MajorProject2700\2700 Major Project\bin\Project.abs"
+PROGRAM "C:\Users\lachl\Documents\GitHub\MajorProject2700\MajorProject2700\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -22,13 +22,19 @@ Linker      : SmartLinker V-5.0.40 Build 10203, Jul 23 2010
 FILE SECTION
 ---------------------------------------------------------------------------------------------
 mc9s12dg256.c.o                         Model: BANKED,        Lang: ANSI-C
-main.c.o                                Model: BANKED,        Lang: ANSI-C
 Start12.c.o                             Model: BANKED,        Lang: ANSI-C
-rtshc12.c.o (ansibi.lib)                Model: BANKED,        Lang: ANSI-C
-motorMovement.c.o                       Model: BANKED,        Lang: ANSI-C
-laser.c.o                               Model: BANKED,        Lang: ANSI-C
-l3g4200d.c.o                            Model: BANKED,        Lang: ANSI-C
+FADD.C.o (ansib.lib)                    Model: BANKED,        Lang: ANSI-C
+FCONV.C.o (ansib.lib)                   Model: BANKED,        Lang: ANSI-C
+FMUL.C.o (ansib.lib)                    Model: BANKED,        Lang: ANSI-C
+FREGS.C.o (ansib.lib)                   Model: BANKED,        Lang: ANSI-C
+rtshc12.c.o (ansib.lib)                 Model: BANKED,        Lang: ANSI-C
+VREGS.C.o (ansib.lib)                   Model: BANKED,        Lang: ANSI-C
 iic.c.o                                 Model: BANKED,        Lang: ANSI-C
+l3g4200d.c.o                            Model: BANKED,        Lang: ANSI-C
+laser.c.o                               Model: BANKED,        Lang: ANSI-C
+main.c.o                                Model: BANKED,        Lang: ANSI-C
+motorMovement.c.o                       Model: BANKED,        Lang: ANSI-C
+LCD.c.o                                 Model: BANKED,        Lang: ANSI-C
 
 *********************************************************************************************
 STARTUP SECTION
@@ -736,11 +742,6 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN0TXTSR                                 17E       2       2       0   .abs_section_17e
      _CAN4RXTSR                                 2AE       2       2       0   .abs_section_2ae
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
-MODULE:                 -- main.c.o --
-- PROCEDURES:
-     delay                                        0'Error      1F      31       0   .text       
-     main                                         0'Error      9C     156       0   .text       
-- VARIABLES:
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
      Init                                         0'Error      29      41       0   .text       
@@ -749,25 +750,40 @@ MODULE:                 -- Start12.c.o --
      _startupData                                 0'Error       6       6       0   STARTUP_DATA
 - LABELS:
      __SEG_END_SSTACK                             0'Error       0       0       0               
-MODULE:                 -- rtshc12.c.o (ansibi.lib) --
+MODULE:                 -- FADD.C.o (ansib.lib) --
+- PROCEDURES:
+     F_ADDKL                                      0'Error      67     103       0   NON_BANKED  
+     _FADD                                        0'Error      15      21       0   NON_BANKED  
+     _FSUB                                        0'Error      13      19       0   NON_BANKED  
+- VARIABLES:
+MODULE:                 -- FCONV.C.o (ansib.lib) --
+- PROCEDURES:
+     F_FRLONGK                                    0'Error      1F      31       0   NON_BANKED  
+     _FUFLOAT                                     0'Error      12      18       0   NON_BANKED  
+- VARIABLES:
+MODULE:                 -- FMUL.C.o (ansib.lib) --
+- PROCEDURES:
+     F_DIVKL                                      0'Error      8E     142       0   NON_BANKED  
+     _FDIV                                        0'Error      1E      30       0   NON_BANKED  
+- VARIABLES:
+MODULE:                 -- FREGS.C.o (ansib.lib) --
+- PROCEDURES:
+     F_PULK                                       0'Error      15      21       0   NON_BANKED  
+     F_PULL                                       0'Error      15      21       0   NON_BANKED  
+     F_PSHK                                       0'Error      13      19       0   NON_BANKED  
+     F_XGKL                                       0'Error      21      33       0   NON_BANKED  
+     F_CLRK                                       0'Error       B      11       0   NON_BANKED  
+     F_MAXK                                       0'Error       9       9       0   NON_BANKED  
+     F_NORMK                                      0'Error      3E      62       0   NON_BANKED  
+- VARIABLES:
+MODULE:                 -- rtshc12.c.o (ansib.lib) --
 - PROCEDURES:
      _LCMP                                        0'Error      19      25       0   NON_BANKED  
      _ILSEXT                                      0'Error       7       7       0   NON_BANKED  
 - VARIABLES:
-MODULE:                 -- motorMovement.c.o --
+MODULE:                 -- VREGS.C.o (ansib.lib) --
 - PROCEDURES:
-     setHorizontal                                0'Error       9       9       0   .text       
-     setVertical                                  0'Error       9       9       0   .text       
-- VARIABLES:
-MODULE:                 -- laser.c.o --
-- PROCEDURES:
-     laserInit                                    0'Error      13      19       0   .text       
-     GetLatestLaserSample                         0'Error       D      13       0   .text       
-- VARIABLES:
-     lastLaserSample                              0'Error       4       4       0   .bss        
-MODULE:                 -- l3g4200d.c.o --
-- PROCEDURES:
-     getRawDataMagnet                             0'Error      21      33       0   .text       
+     UL_PULK                                      0'Error       3       3       0   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- iic.c.o --
 - PROCEDURES:
@@ -788,6 +804,42 @@ MODULE:                 -- iic.c.o --
      currentTime                                  0'Error       2       2       0   .bss        
      alarmTime                                    0'Error       2       2       0   .bss        
      alarmSet                                     0'Error       1       1       0   .bss        
+MODULE:                 -- l3g4200d.c.o --
+- PROCEDURES:
+     getRawDataMagnet                             0'Error      21      33       0   .text       
+- VARIABLES:
+MODULE:                 -- laser.c.o --
+- PROCEDURES:
+     laserInit                                    0'Error      13      19       0   .text       
+     GetLatestLaserSample                         0'Error       D      13       0   .text       
+- VARIABLES:
+     lastLaserSample                              0'Error       4       4       0   .bss        
+MODULE:                 -- main.c.o --
+- PROCEDURES:
+     delay                                        0'Error      1F      31       0   .text       
+     main                                         0'Error      E8     232       0   .text       
+- VARIABLES:
+     STRING.There.are.5.milk.car.1                0'Error      24      36       0   .rodata1    
+     STRING.There.are.4.milk.car.2                0'Error      24      36       0   .rodata1    
+     STRING.There.are.3.milk.car.3                0'Error      24      36       0   .rodata1    
+     STRING.There.are.2.milk.car.4                0'Error      24      36       0   .rodata1    
+     STRING.There.is.1.milk.cart.5                0'Error      2B      43       0   .rodata1    
+     STRING.There.are.0.milk.car.6                0'Error      2D      45       0   .rodata1    
+     STRING.Error..LIDAR.too.clo.7                0'Error      18      24       0   .rodata1    
+MODULE:                 -- motorMovement.c.o --
+- PROCEDURES:
+     PWMinitialise                                0'Error      24      36       0   .text       
+     setHorizontal                                0'Error       9       9       0   .text       
+     setVertical                                  0'Error       9       9       0   .text       
+- VARIABLES:
+MODULE:                 -- LCD.c.o --
+- PROCEDURES:
+     Init_LCD                                     0'Error      36      54       0   .text       
+     writeStringLCD                               0'Error      2E      46       0   .text       
+     COMWRT4                                      0'Error      4B      75       0   .text       
+     DATWRT4                                      0'Error      4B      75       0   .text       
+     MSDelay                                      0'Error      1F      31       0   .text       
+- VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
@@ -807,29 +859,41 @@ OBJECT LIST SORTED BY ADDRESS
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
 NOT USED PROCEDURES
-rtshc12.c.o (ansibi.lib):
+FADD.C.o (ansib.lib):
+  _FINC _FDEC _FNEG _FABS 
+FCONV.C.o (ansib.lib):
+  F_TOLONGK _FSFLOAT _FSTRUNC _FUTRUNC 
+FMUL.C.o (ansib.lib):
+  F_MULKL _FMUL 
+FREGS.C.o (ansib.lib):
+  F_STAL F_TLK F_TKL F_CLRL 
+rtshc12.c.o (ansib.lib):
   _BSHL _BSHRS _BSHRU _BDIVMODU _BDIVMODS _ISHL _ISHRU _ISHRS _LSHL _LSHRU 
   _LSHRS _LADD _LSUB _LAND _LOR _LXOR _LCMP_P _LCMP_PP _LNEG _LCOM _LINC _LDEC 
   _LMUL _LMULU16x32 _LMULS16x32 _lDivMod _LDIVU _NEG_P _LDIVS _LMODU _LMODS 
   _COPY _CASE_DIRECT _CASE_DIRECT_BYTE _CASE_CHECKED _CASE_CHECKED_BYTE 
   _CASE_SEARCH _CASE_SEARCH_BYTE _CASE_SEARCH_8 _CASE_SEARCH_8_BYTE _FCALL 
   _FPCMP 
-motorMovement.c.o:
-  PWMinitialise 
-laser.c.o:
-  TC1_ISR 
+VREGS.C.o (ansib.lib):
+  L_NEGK L_PSHK SL_PULK 
+iic.c.o:
+  iicinit iic_send_data iicreceiveone Init_TC7 TC7_ISR 
 l3g4200d.c.o:
   getRawDataAccel getRawDataGyro iicSensorInit accel_init gyro_init 
   magnet_init 
-iic.c.o:
-  iicinit iic_send_data iicreceiveone Init_TC7 TC7_ISR 
-NOT USED VARIABLES
-rtshc12.c.o (ansibi.lib):
-  _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
 laser.c.o:
-  riseEdge fallEdge 
+  TC1_ISR 
+LCD.c.o:
+  writeSIntLCD writeStringAndSIntLCD writeTwoStringsSndTwoSIn 
+NOT USED VARIABLES
+rtshc12.c.o (ansib.lib):
+  _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
 l3g4200d.c.o:
   accelerometer_cfg gyro_cfg mag_cfg 
+laser.c.o:
+  riseEdge fallEdge 
+LCD.c.o:
+  STRING..d.1 STRING...2 STRING..u.3 
 
 *********************************************************************************************
 COPYDOWN SECTION

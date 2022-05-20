@@ -8,7 +8,7 @@
 
 
 /* General Time Delay Function */
-void delay() {
+void segDelay() {
    int c, d; 
    // For some reasons fks up if just use 15000 in one loop so eh 
    for (c = 1; c <= 50; c++) {
@@ -63,7 +63,7 @@ void main(void) {
 	EnableInterrupts;
 
   for(;;) {
-    delay();
+    segDelay();
     
     number_of_cartons = number_of_cartons + 1; // REPLACE WITH UPDATE FUNCTION
     
