@@ -1,16 +1,17 @@
 /*
-  In theory, should only need to change 'mode' variable to play different tune
+  Change mode variable to play different tune
   
-  Only problem is not sure how the function should know to recieve a new mode variable. Maybe just call the function when needed?
 */
 
 #include <hidef.h>     
 #include "derivative.h"
 #define zero_in_ascii 48
 
+
 // Defining functions
 int noteSelector(char notes[8], char current_num);
 void delay_function(char delay);
+void update_notes(char notes[8]);
 
 int current_period;         // Period of note
 char current_delay;         // How long note is held
@@ -19,7 +20,7 @@ char current_delay;         // How long note is held
 int mode = 0;               // 0 for rest, 1 for low inventory, 2 for normal
 
 
-void main(void) {   
+void play_tune(int mode) {   
     // 8 Bit string defining 4 notes in C major scale & length of each
     char item_removed[8] = {'c','q','f','g','2','1','2','4'}; 
     char low_stock[8] = {'c','f','c','f','1','1','1','1'}; 
@@ -76,7 +77,7 @@ void main(void) {
       current_line++;
       
     if ((mode == 1)&&(current_line>5)) || ((mode == 1)&&(current_line>2)) {
-      mode == 0;
+      break;
     }
     update_notes(notes);
     }  
