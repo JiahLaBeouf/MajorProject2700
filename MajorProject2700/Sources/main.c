@@ -31,11 +31,12 @@ void main(void) {
   /*IDENTIFYING MAGNET CODE*/
   //Variable storing the largest magnet value corrosponding towards pointing towards the magnet & position of servo
   int maxMagValue = 0;
-  int maxPosition =0;
+  unsigned long lowestDistanceValue = 4294967295;
   int i;
   
   //Variables for calculating the number of milk cartons remaining & output
   unsigned long laserDistance;
+  int storedPosition =0;
   unsigned long cartonLength = 0.098;
   int milkNum; 
   
@@ -46,6 +47,7 @@ void main(void) {
   PWMinitialise();
   laserInit();
   Init_LCD();
+  iicSensorInit();
   EnableInterrupts;
   _DISABLE_COP();
    
@@ -60,21 +62,34 @@ void main(void) {
     setHorizontal(i);
   
     //Read the magnet data
-    getRawDataMagnet(&read_magnet);
+    //getRawDataMagnet(&read_magnet);
   
-    if(read_magnet.x>maxMagValue){
+    //Get the latest laser reading
+    GetLatestLaserSample(&laserDistance);
+    
+    //Store the highest mag value
+    /*if(read_magnet.x>maxMagValue){
   
       //Store max value and position
-      maxMagValue = read_magnet.x;
-      maxPosition = i;
-    }
+      //maxMagValue = read_magnet.x;
+      storedPosition = i;
+    }*/
+    
+    //Store the cloest distance value
+    if(laserDistance<lowestDistanceValue){
   
+      //Store lowest distance and position
+      lowestDistanceValue = laserDistance;
+      storedPosition = i;
+      
+    }
+    
     //Delay for 0.05sec
     delay();
   }
   
   //Set the servo to the position with the highest recorded value
-  setHorizontal(maxPosition);
+  setHorizontal(storedPosition);
   
   
   /*MEASURING MILK CARTONS CODE*/
@@ -114,6 +129,7 @@ void main(void) {
   
   }
   
+ /*MEASURING WHICH MILK CARTON*/
   
   
   for(;;) {

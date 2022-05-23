@@ -1,0 +1,78 @@
+
+mc9s12dg256.c.o: mc9s12dg256.c mc9s12dg256.h 
+
+
+datapage.c.o: datapage.c hidef.h default2.sgm stdtypes.h stddef.h non_bank.sgm runtime.sgm 
+
+
+Start12.c.o: Start12.c hidef.h default2.sgm stdtypes.h stddef.h start12.h push.sgm non_bank.sgm default.sgm pop.sgm 
+
+
+accelerometer.c.o: accelerometer.c accelerometer.h 
+
+
+gyro.c.o: gyro.c gyro.h 
+
+
+iic.c.o: iic.c hidef.h default2.sgm stdtypes.h stddef.h derivative.h mc9s12dg256.h iic.h 
+
+
+l3g4200d.c.o: l3g4200d.c l3g4200d.h iic.h accelerometer.h gyro.h hidef.h default2.sgm stdtypes.h stddef.h derivative.h mc9s12dg256.h l3g4200d_definitions.h 
+
+
+laser.c.o: laser.c derivative.h mc9s12dg256.h laser.h 
+
+
+magnetometer.c.o: magnetometer.c magnetometer.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+motorMovement.c.o: motorMovement.c derivative.h mc9s12dg256.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h motorMovement.h 
+
+
+pll.c.o: pll.c hidef.h default2.sgm stdtypes.h stddef.h mc9s12dp256.h pll.h 
+
+
+LCD.c.o: LCD.c LCD.h hidef.h default2.sgm stdtypes.h stddef.h derivative.h mc9s12dg256.h stdio.h stdarg.h string.h libdefs.h errno.h 
+
+
+LCD.c.o: LCD.c LCD.h hidef.h default2.sgm stdtypes.h stddef.h derivative.h mc9s12dg256.h stdio.h stdarg.h string.h libdefs.h errno.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+LCD.c.o: LCD.c LCD.h hidef.h default2.sgm stdtypes.h stddef.h derivative.h mc9s12dg256.h stdio.h stdarg.h string.h libdefs.h errno.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+
+
+main.c.o: main.c hidef.h default2.sgm stdtypes.h stddef.h assert.h stdlib.h libdefs.h stdio.h stdarg.h string.h errno.h time.h math.h push.sgm non_bank.sgm default.sgm pop.sgm ieeemath.h derivative.h mc9s12dg256.h motorMovement.h pll.h l3g4200d.h iic.h accelerometer.h gyro.h laser.h magnetometer.h LCD.h 
+

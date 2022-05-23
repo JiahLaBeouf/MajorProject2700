@@ -787,18 +787,14 @@ MODULE:                 -- VREGS.C.o (ansib.lib) --
 - VARIABLES:
 MODULE:                 -- iic.c.o --
 - PROCEDURES:
-     iic_request_data                             0'Error      1B      27       0   .text       
-     iic_read_data                                0'Error      58      88       0   .text       
+     iicinit                                      0'Error      1C      28       0   .text       
+     iic_send_data                                0'Error      2E      46       0   .text       
      iicresponse                                  0'Error      2E      46       0   .text       
      iicstart                                     0'Error      42      66       0   .text       
      iicstop                                      0'Error       4       4       0   .text       
-     iicrestart                                   0'Error       E      14       0   .text       
      iictransmit                                  0'Error       B      11       0   .text       
-     iicswrcv                                     0'Error       8       8       0   .text       
-     iicreceive                                   0'Error      27      39       0   .text       
-     iicreceivem1                                 0'Error      2A      42       0   .text       
-     iicreceivelast                               0'Error      30      48       0   .text       
      setAlarm                                     0'Error      17      23       0   .text       
+     Init_TC7                                     0'Error      10      16       0   .text       
 - VARIABLES:
      alarmSignaled                                0'Error       1       1       0   .bss        
      currentTime                                  0'Error       2       2       0   .bss        
@@ -806,8 +802,14 @@ MODULE:                 -- iic.c.o --
      alarmSet                                     0'Error       1       1       0   .bss        
 MODULE:                 -- l3g4200d.c.o --
 - PROCEDURES:
-     getRawDataMagnet                             0'Error      21      33       0   .text       
+     iicSensorInit                                0'Error      29      41       0   .text       
+     accel_init                                   0'Error      10      16       0   .text       
+     gyro_init                                    0'Error      10      16       0   .text       
+     magnet_init                                  0'Error      10      16       0   .text       
 - VARIABLES:
+     accelerometer_cfg                            0'Error       4       4       0   .data       
+     gyro_cfg                                     0'Error       2       2       0   .data       
+     mag_cfg                                      0'Error       2       2       0   .data       
 MODULE:                 -- laser.c.o --
 - PROCEDURES:
      laserInit                                    0'Error      13      19       0   .text       
@@ -817,7 +819,7 @@ MODULE:                 -- laser.c.o --
 MODULE:                 -- main.c.o --
 - PROCEDURES:
      delay                                        0'Error      1F      31       0   .text       
-     main                                         0'Error      E8     232       0   .text       
+     main                                         0'Error      FE     254       0   .text       
 - VARIABLES:
      STRING.There.are.5.milk.car.1                0'Error      24      36       0   .rodata1    
      STRING.There.are.4.milk.car.2                0'Error      24      36       0   .rodata1    
@@ -877,10 +879,10 @@ rtshc12.c.o (ansib.lib):
 VREGS.C.o (ansib.lib):
   L_NEGK L_PSHK SL_PULK 
 iic.c.o:
-  iicinit iic_send_data iicreceiveone Init_TC7 TC7_ISR 
+  iic_request_data iic_read_data iicrestart iicswrcv iicreceive iicreceivem1 
+  iicreceivelast iicreceiveone TC7_ISR 
 l3g4200d.c.o:
-  getRawDataAccel getRawDataGyro iicSensorInit accel_init gyro_init 
-  magnet_init 
+  getRawDataMagnet getRawDataAccel getRawDataGyro 
 laser.c.o:
   TC1_ISR 
 LCD.c.o:
@@ -888,8 +890,6 @@ LCD.c.o:
 NOT USED VARIABLES
 rtshc12.c.o (ansib.lib):
   _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
-l3g4200d.c.o:
-  accelerometer_cfg gyro_cfg mag_cfg 
 laser.c.o:
   riseEdge fallEdge 
 LCD.c.o:
