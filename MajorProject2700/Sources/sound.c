@@ -5,6 +5,7 @@
 
 #include <hidef.h>     
 #include "derivative.h"
+#include "sound.h"
 #define zero_in_ascii 48
 
 
