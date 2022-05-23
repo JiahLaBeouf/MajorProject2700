@@ -15,6 +15,7 @@
 #include "gyro.h"
 #include "iic.h"
 #include "LCD.h"
+#include "sound.h"
 
 void delay(void)
 {
@@ -128,6 +129,16 @@ void main(void) {
     writeStringLCD("Error: LIDAR too close.");
   
   }
+  
+  
+  // Sound Effects
+  if (milkNum > 1){
+    play_tune(2);
+  }
+  else {
+    play_tune(1);
+  }
+  
   
  /*MEASURING WHICH MILK CARTON*/
   
