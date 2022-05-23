@@ -1,6 +1,5 @@
 /*
   Change mode variable to play different tune
-  
 */
 
 #include <hidef.h>     
@@ -13,26 +12,25 @@
 int noteSelector(char notes[8], char current_num);
 void delay_function(char delay);
 void update_notes(char notes[8]);
+void play_tune(int mode);
 
 int current_period;         // Period of note
 char current_delay;         // How long note is held
 
 // THIS VARIABLE SHOULD BE UPDATED USING A FUNCTION
-int mode = 0;               // 0 for rest, 1 for low inventory, 2 for normal
+// 1 for low inventory, 2 for normal (one item removed)
+//int mode = 2;               
 
 
 void play_tune(int mode) {   
-    // 8 Bit string defining 4 notes in C major scale & length of each
-    char item_removed[8] = {'c','q','f','g','2','1','2','4'}; 
-    char low_stock[8] = {'c','f','c','f','1','1','1','1'}; 
-    char quiet[8] = {'q','q','q','q','8','8','8','8'};         
+    // String defining 4 notes in C major scale & length of each       
     char notes[8];      
     
     // Current note of string to play
     char current_num = 0; 
     
     // How many times played
-    char current_line = 1;
+    char current_line = 1;    
 
     
     // Setting up timer and interrupt
@@ -77,10 +75,9 @@ void play_tune(int mode) {
       current_num = 0;
       current_line++;
       
-    if ((mode == 1)&&(current_line>5)) || ((mode == 1)&&(current_line>2)) {
-      break;
-    }
-    update_notes(notes);
+      if ((mode == 2) || (current_line>5)) {
+        break;
+      }
     }  
   }
   /* end of main */
@@ -93,8 +90,8 @@ void play_tune(int mode) {
 int noteSelector(char notes[8], char current_num){
     char letters[8] = {'c','d','e','f','g','a','b','C'};
     int period[8] = {5733,5108,4551,4295,3827,3409,3037,2867};
+    int i;     // iterator
     
-    char i;
     for (i = 0; i < 8; i++) {   
       if (notes[current_num] == letters[i]) {
         int current_period = period[i];
@@ -130,7 +127,13 @@ void delay_function(char delay){
 /*
    Function should update the notes currently played
 */
-void update_notes(char notes[8]){
+void update_notes(char notes[8]){  
+  // Strings giving the tune to play
+  char item_removed[8] = {'c','q','f','g','2','1','2','4'}; 
+  char low_stock[8] = {'c','f','c','f','6','6','6','6'}; 
+  char quiet[8] = {'q','q','q','q','1','1','1','1'};  
+  int i;     // iterator
+  
   if (mode == 1) {
     for (i = 0; i < 8; i++){
       notes[i] = low_stock[i];  
