@@ -13,4 +13,7 @@ void update_notes(char notes[8]);
 // Main function of sound module
 void play_tune(int mode);
 
+// Timer ISR
+__interrupt void OC_interrupt(void);
+
 #endif
