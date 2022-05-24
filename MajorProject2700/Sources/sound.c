@@ -153,7 +153,7 @@ void update_notes(char notes[8]){
    
 #pragma CODE_SEG __NEAR_SEG NON_BANKED
  
-interrupt 13 void OC_interrupt(void) {
+__interrupt void OC_interrupt(void) {
   
   // reset output compare to repeat
   TC5 = TC5 + current_period;   
