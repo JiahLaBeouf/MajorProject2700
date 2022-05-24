@@ -64,9 +64,10 @@ One of the key components of the design is the data processing from points colle
 - A small tune will be played each time a carton is removed, and an alternate siren-like sound plays when stock is low.
 
 # Code environment
+Section for how to publish code smoothly to the repo to ensure code development and testing is rapid and can be done without any hastle, and across multiple machines.
 
 
-# Commiting code to github (push)
+## Commiting code to github (push)
 - ensure you have the repository cloned to your workspace
 - navigate to the project folder of the code you're trying to change/view in your IDE
 - when going to edit code, open the file straight from the location you cloned the repository to (ie repo/project/cources/x.c or whatever)
